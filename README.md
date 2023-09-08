@@ -1,3 +1,3 @@
 # ride-sync
 
-This package contains all the libraries upon which the RideSync app runs.
+An IoT Software that lets you seamlessly control your robotics microcontroller using MQTT communication protocol.
