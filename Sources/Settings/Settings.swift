@@ -1,0 +1,33 @@
+//
+//  Settings.swift
+//  This source contains the main logic for running the SettingsView
+//
+//  Created by DOMINIC NDONDO on 9/8/23.
+//
+import ComposableArchitecture
+import Foundation
+
+public struct SettingsFeature: Reducer {
+    
+    public struct State: Equatable {
+        public init() {}
+    }
+    
+    public enum Action: Equatable {
+        case none
+    }
+    
+    public init() {}
+    
+    public var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .none:
+                return Effect.none
+            }
+        }
+        
+        //TODO - Scope child reducers here if any
+    }
+    
+}
