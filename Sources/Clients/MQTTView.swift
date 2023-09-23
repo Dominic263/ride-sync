@@ -8,11 +8,12 @@ import ComposableArchitecture
 import SwiftUI
 import UIExtensions
 
-
 public struct MQTTView: View {
     public let store: StoreOf<ServerConnection>
     
-    public init(store: StoreOf<ServerConnection>){
+    public init(
+        store: StoreOf<ServerConnection>
+    ){
         self.store = store
     }
     
@@ -20,7 +21,16 @@ public struct MQTTView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack {
                 Spacer()
-                Text("Message: \n" + viewStore.displayMessage)
+                Text("MESSAGE: ")
+                    .font(.headline)
+                    .padding()
+                
+                if(viewStore.isConnecting){
+                    ProgressView()
+                }
+                Text(viewStore.displayMessage)
+                    .font(.subheadline)
+                    .padding()
                 Spacer()
                 Button(
                     action: {viewStore.send(.connectButtonTapped)}
@@ -35,7 +45,8 @@ public struct MQTTView: View {
                         imageColor: .blue,
                         textColor: .black
                     )
-                }.buttonStyle(.plain)
+                }
+                .buttonStyle(.plain)
                 Spacer()
             }
         }
@@ -49,8 +60,9 @@ struct ServerConnection_Previews: PreviewProvider {
             store: Store(
                 initialState: ServerConnection.State()
             ){
-                    ServerConnection()
-            })
+                ServerConnection()
+            }
+        )
     }
 }
 

@@ -18,7 +18,8 @@ let package = Package(
         .library(name: "App", targets: ["App"]),
         .library(name: "Dashboard", targets: ["Dashboard"]),
         .library(name: "Controls", targets: ["Controls"]),
-        .library(name: "Clients", targets: ["Clients"])
+        .library(name: "Clients", targets: ["Clients"]),
+        .library(name: "ClientDependencies", targets: ["ClientDependencies"])
     ],
     
     dependencies: [
@@ -29,7 +30,12 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(name: "UIExtensions", dependencies: []),
-        
+        .target(name: "ClientDependencies",
+                dependencies: [
+            .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            .product(name: "MQTTNIO", package: "mqtt-nio")
+            
+        ]),
         .target(
             name: "Clients",
             dependencies: [
