@@ -21,7 +21,7 @@ public struct MQTTView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack {
                 Spacer()
-                Text("MESSAGE: ")
+                Text("MESSAGE")
                     .font(.headline)
                     .padding()
                 
